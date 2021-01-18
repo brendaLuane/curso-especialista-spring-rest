@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
@@ -13,17 +15,19 @@ import java.util.List;
 public class Problem {
 
     private Integer status;
+    private OffsetDateTime timestamp;
     private String type;
     private String title;
     private String detail;
     private String userMessage;
-    private LocalDateTime timestamp;
-    private List<Field> fields;
+    private List<Object> objects;
 
     @Getter
     @Builder
-    public static class Field {
+    public static class Object {
+
         private String name;
         private String userMessage;
+
     }
 }
